@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import os
 import joblib
 import warnings
 
@@ -6,6 +7,8 @@ warnings.filterwarnings("ignore")
 
 # create a Flask application
 app = Flask(__name__)
+env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
+app.config.from_object(env_config)
 
 # load the trained machine learning model
 model = joblib.load('model.pkl')
