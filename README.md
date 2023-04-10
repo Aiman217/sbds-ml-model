@@ -1,11 +1,10 @@
 # SBDS-ML-Model
-# Flask Project
 
-This is a Flask project that demonstrates how to run a Flask app in Visual Studio Code.
+This is repository for ML Model deployment used on SBDS.
 
 ## Requirements
 
-- Python 3.x
+- Python 3.10
 - Virtualenv (optional)
 - Flask
 
@@ -27,16 +26,8 @@ This is a Flask project that demonstrates how to run a Flask app in Visual Studi
 ## Usage
 
 1. Run the Flask app: `flask run`
-2. Open your web browser and navigate to `http://localhost:5000/`
-
-## Contributing
-
-Feel free to contribute to this project by submitting a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
+2. Open your web browser and navigate to url provided by flask
 
 ## Credits
 
-This project was created by [Your Name](https://github.com/yourname).
+This project was created by Aiman Arif(https://github.com/Aiman217).
