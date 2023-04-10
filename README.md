@@ -30,4 +30,4 @@ This is repository for ML Model deployment used on SBDS.
 
 ## Credits
 
-This project was created by Aiman Arif(https://github.com/Aiman217).
+This project was created by Aiman Arif (https://github.com/Aiman217).
