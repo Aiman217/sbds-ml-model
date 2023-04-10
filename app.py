@@ -16,7 +16,7 @@ model = joblib.load('model.pkl')
 
 # define a route for the "Hello, World!" endpoint
 @app.route('/')
-def hello():
+def index():
     return 'Hello, World!'
 
 
@@ -62,12 +62,3 @@ def predict():
         return jsonify({'predictions': "Negative"})
     else:
         return jsonify({'predictions': "Positive"})
-
-
-# define a function that starts the Flask application
-def run():
-    app.run(debug=True)
-
-
-if __name__ == '__main__':
-    run()
