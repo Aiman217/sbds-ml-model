@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore")
 app = Flask(__name__)
 
 # load the trained machine learning model
-model = joblib.load('rfc_model.pkl')
+model = joblib.load('model.pkl')
 
 
 # define a route for the "Hello, World!" endpoint
