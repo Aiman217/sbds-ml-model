@@ -14,7 +14,7 @@ This is repository for ML Model deployment used on SBDS.
 2. Create a virtual environment (optional): `python -m venv venv`
 3. Activate the virtual environment (optional):
    - Mac/Linux: `source venv/bin/activate`
-   - Windows: `venv\Scripts\activate`
+   - Windows: `source venv/Scripts/activate`
 4. Install the required packages: `pip install -r requirements.txt`
 5. Set the Flask app environment variable: 
    - Mac/Linux: `export FLASK_APP=app.py`
