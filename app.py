@@ -10,10 +10,6 @@ app = Flask(__name__)
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)
 
-# load the trained machine learning model
-model = joblib.load('model.pkl')
-
-
 # define a route for the "Hello, World!" endpoint
 @app.route('/')
 def index():
@@ -27,6 +23,7 @@ def predict():
     data = request.get_json()
 
     # assign input to each variable
+    algo = data['Algo']
     input_data = [
         data['Age'],
         data['Gender'],
@@ -48,6 +45,22 @@ def predict():
         data['Past_Suicidal_Attempt'],
         data['Medical_Comorbidity']
     ]
+
+    if algo == 'dtree':
+        # load the trained machine learning model
+        model = joblib.load('model_dtree.pkl')
+
+        predictions = model.predict(predict_data)
+    elif algo == 'nb':
+        # load the trained machine learning model
+        model = joblib.load('model_nb.pkl')
+
+        predictions = model.predict(predict_data)
+    else:
+        # load the trained machine learning model
+        model = joblib.load('model_ensemble.pkl')
+
+        predictions = model.predict(predict_data)
 
     # create data format for prediction
     predict_data = [input_data]
