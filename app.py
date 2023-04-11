@@ -46,32 +46,33 @@ def predict():
         data['Medical_Comorbidity']
     ]
 
-    if algo == 'dtree':
-        # load the trained machine learning model
-        model = joblib.load('model_dtree.pkl')
-
-        predictions = model.predict(predict_data)
-    elif algo == 'nb':
-        # load the trained machine learning model
-        model = joblib.load('model_nb.pkl')
-
-        predictions = model.predict(predict_data)
-    else:
-        # load the trained machine learning model
-        model = joblib.load('model_ensemble.pkl')
-
-        predictions = model.predict(predict_data)
-
     # create data format for prediction
     predict_data = [input_data]
 
-    # use the loaded model to make predictions
-    predictions = model.predict(predict_data)
+    # load the trained machine learning model and algorithm name
+    if algo == 'dtree':
+        algo_name = 'Decision Tree'
+        model = joblib.load('model_dtree.pkl')
+    elif algo == 'nb':
+        algo_name = 'Naive Bayes'
+        model = joblib.load('model_nb.pkl')
+    else:
+        algo_name = 'Ensemble Model'
+        model = joblib.load('model_ensemble.pkl')
 
+    # make prediction
+    predictions = model.predict(predict_data)
+    
     # prediction result
     result = str(predictions[0])
 
     if result == '0':
-        return jsonify({'predictions': "Negative"})
+        return jsonify({
+            'algorithm': algo_name,
+            'predictions': "Negative"
+        })
     else:
-        return jsonify({'predictions': "Positive"})
+        return jsonify({
+            'algorithm': algo_name,
+            'predictions': "Positive"
+        })
