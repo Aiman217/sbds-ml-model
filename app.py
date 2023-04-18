@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 import os
 import joblib
 import warnings
@@ -7,6 +8,7 @@ warnings.filterwarnings("ignore")
 
 # create a Flask application
 app = Flask(__name__)
+CORS(app)
 env_config = os.getenv("PROD_APP_SETTINGS", "config.DevelopmentConfig")
 app.config.from_object(env_config)
 
