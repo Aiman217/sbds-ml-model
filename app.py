@@ -14,12 +14,14 @@ app.config.from_object(env_config)
 
 # define a route for the "Hello, World!" endpoint
 @app.route('/')
+@cross_origin()
 def index():
     return 'Hello, World!'
 
 
 # define a route for making predictions
 @app.route('/predict', methods=['POST'])
+@cross_origin()
 def predict():
     # get the input data from the user
     data = request.get_json()
@@ -64,7 +66,7 @@ def predict():
 
     # make prediction
     predictions = model.predict(predict_data)
-    
+
     # prediction result
     result = str(predictions[0])
 
