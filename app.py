@@ -16,7 +16,7 @@ app.config.from_object(env_config)
 @app.route('/')
 @cross_origin()
 def index():
-    return 'Hello, World!'
+    return 'This is ML Model used for SBDS.'
 
 
 # define a route for making predictions
@@ -32,15 +32,11 @@ def predict():
         data['Age'],
         data['Gender'],
         data['Ethnicity'],
-        data['Religion'],
-        data['Marital_Status'],
         data['Employment'],
         data['Little_Interest'],
         data['Feeling_Down'],
         data['Sleeping_Trouble'],
         data['Feeling_Tired'],
-        data['Poor_Appetite'],
-        data['Feeling_Bad'],
         data['Trouble_Concentrating'],
         data['Moving_Slowly'],
         data['Thoughts_self_harm'],
@@ -61,8 +57,11 @@ def predict():
         algo_name = 'Naive Bayes'
         model = joblib.load('model_nb.pkl')
     else:
-        algo_name = 'Ensemble Model'
-        model = joblib.load('model_ensemble.pkl')
+        return jsonify({
+            'algorithm': "",
+            'prediction': "",
+            'error': "No algorithm method is provided!"
+        })
 
     # make prediction
     predictions = model.predict(predict_data)
@@ -73,10 +72,10 @@ def predict():
     if result == '0':
         return jsonify({
             'algorithm': algo_name,
-            'predictions': "Negative"
+            'prediction': "Low Risk"
         })
     else:
         return jsonify({
             'algorithm': algo_name,
-            'predictions': "Positive"
+            'prediction': "High Risk"
         })
